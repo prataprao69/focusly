@@ -3,7 +3,7 @@
 ## Screen Recording (Unlisted YouTube)
 https://youtu.be/s6jtio-63Mw?si=KhKQwA0DqnXOH0tW
 ## Live Hosted URL
-https://github.com/prataprao69/focusly/tree/main/focusly_assignment
+https://focusly-landing-page.vercel.app/
 ## GitHub Repository
 https://github.com/prataprao69/focusly/tree/main/focusly_assignment
 
