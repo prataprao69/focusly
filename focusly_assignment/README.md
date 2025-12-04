@@ -4,10 +4,9 @@
 Place your unlisted YouTube link here after uploading the recording.
 
 ## Live Hosted URL
-Place your hosted site link here (Netlify, Vercel, GitHub Pages, etc).
-
+https://github.com/prataprao69/focusly/tree/main/focusly_assignment)
 ## GitHub Repository
-Place your public GitHub repository URL here.
+https://github.com/prataprao69/focusly/tree/main/focusly_assignment
 
 ## Project structure
 ```
