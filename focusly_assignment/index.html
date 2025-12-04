@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Makes the website responsive on mobile -->
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Focusly — Landing (Interactive Single File)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ===========================
+       Accessibility: skip link
+       ===========================
+  -->
+  <a class="skip-link" href="#mainContent">Skip to main content</a>
+
+  <!-- ===========================
+       Header
+       ===========================
+  -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+
+      <!-- logo / brand -->
+      <div class="brand" aria-label="Focusly brand">Focusly</div>
+
+      <!-- Desktop nav -->
+      <nav class="nav-desktop" aria-label="Primary navigation">
+        <a href="#">Home</a>
+        <a href="#features-heading">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- Right-side controls: theme and CTA on larger screens -->
+      <div class="row" style="margin-left:auto; gap:10px;">
+        <!-- Theme toggle -->
+        <button id="themeToggle" class="control" title="Toggle theme" aria-pressed="false">
+          <span id="themeLabel" aria-hidden="true">🌙</span>
+          <span class="muted" style="margin-left:6px;">Theme</span>
+        </button>
+
+        <!-- CTA opens modal -->
+        <button id="openGetStarted" class="btn-cta" aria-haspopup="dialog">Get Started</button>
+
+        <!-- Hamburger for mobile -->
+        <button id="mobileToggle" class="hamburger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle menu">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile dropdown menu (now vertical on small screens) -->
+    <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+      <div class="container mobile-row" role="menubar">
+        <!-- These links will appear stacked in mobile dropdown -->
+        <a role="menuitem" href="#">Home</a>
+        <a role="menuitem" href="#features-heading">Features</a>
+        <a role="menuitem" href="#pricing">Pricing</a>
+        <a role="menuitem" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===========================
+       Main content starts here
+       ===========================
+  -->
+  <main id="mainContent" class="site-main container" role="main">
+
+    <!-- ===========================
+         HERO
+         - Right side now contains an actual image element (replace path as needed)
+         ===========================
+    -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-left">
+        <p class="eyebrow">Work Smart. Stay Focused.</p>
+
+        <h1 id="hero-heading" class="hero-title">Work Smart. Stay<br/>Focused.</h1>
+
+        <p class="hero-desc">
+          Boost your productivity as a remote worker with Focusly. Our intuitive tools help you manage tasks,
+          track time, and maintain focus in your home office environment.
+        </p>
+
+        <!-- Controls: Launch timer, view quick stats -->
+        <div class="controls" aria-hidden="false">
+
+          <!-- Pomodoro Timer control (interactive) -->
+          <div class="control" aria-live="polite">
+            <div>
+              <div class="muted">Focus Session</div>
+              <div id="timerDisplay" class="timer-display" aria-atomic="true">25:00</div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <button id="timerStart" class="btn-cta">Start</button>
+              <button id="timerPause" class="control" style="border-radius:8px;">Pause</button>
+            </div>
+          </div>
+
+          <!-- Quick productivity meter -->
+          <div class="control" title="Today productivity">
+            <div class="muted">Today</div>
+            <meter id="productivityMeter" min="0" max="100" value="72" style="width:120px;" aria-label="Productivity 72 percent">72%</meter>
+          </div>
+
+        </div>
+
+        <!-- Secondary actions -->
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a id="quickStart" class="btn-cta" href="#get-started" role="button">Quick Start</a>
+          <a id="learnMore" style="text-decoration:none; padding:10px; border-radius:8px; display:inline-block;" href="#features-heading">Learn more →</a>
+        </div>
+
+      </div>
+
+      <div class="hero-right">
+        <!-- ADDED IMAGE: place your hero image at the path below.
+             If you don't have an image in that path, replace with the correct filename.
+             The image is responsive and will scale down on mobile. -->
+        <img src="assets/hero-placeholder.png"
+             alt="Team working together illustration"
+             class="hero-img">
+
+        <!-- Optional SVG fallback / decoration (kept for decoration if you want both) -->
+        <!--
+        <div class="illustration" aria-hidden="true">
+          ...svg...
+        </div>
+        -->
+      </div>
+    </section>
+
+    <!-- ===========================
+         FEATURES BAND
+         ===========================
+    -->
+    <section class="features-band" aria-labelledby="features-heading" id="features">
+      <div class="features-inner">
+        <h2 id="features-heading">Everything you need to stay productive</h2>
+
+        <p class="features-sub muted">
+          Discover powerful features designed specifically for remote workers to enhance focus and productivity.
+        </p>
+
+        <div class="feature-cards" role="list">
+
+          <article class="feature-card" role="listitem" tabindex="0" aria-expanded="false" id="card-time">
+            <div class="feature-icon" aria-hidden="true">⏱</div>
+            <h3>Time Tracking</h3>
+            <p>Monitor your work hours and break patterns to optimize your daily schedule.</p>
+            <div class="more">
+              <p class="muted">Track projects, set billable rates, and export timesheets to CSV for invoicing.</p>
+            </div>
+          </article>
+
+          <article class="feature-card" role="listitem" tabindex="0" aria-expanded="false" id="card-focus">
+            <div class="feature-icon" aria-hidden="true">🎯</div>
+            <h3>Focus Sessions</h3>
+            <p>Use Pomodoro-style focus sessions to eliminate distractions.</p>
+            <div class="more">
+              <p class="muted">Start focus sessions, block notifications, and get gentle reminders when it's time to rest.</p>
+            </div>
+          </article>
+
+          <article class="feature-card" role="listitem" tabindex="0" aria-expanded="false" id="card-analytics">
+            <div class="feature-icon" aria-hidden="true">📊</div>
+            <h3>Productivity Analytics</h3>
+            <p>Get detailed insights into your work patterns and trends.</p>
+            <div class="more">
+              <p class="muted">Visualize weekly focus time and see trends — exportable as CSV for deeper analysis.</p>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===========================
+         Pricing & Contact
+         ===========================
+    -->
+    <section id="pricing" style="margin-top:28px;">
+      <h2 style="color:var(--brand); margin-bottom:8px;">Pricing</h2>
+      <p class="muted">Free trial — then flexible monthly or enterprise plans. (Mock for demo)</p>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px;">
+        <div style="padding:12px; border-radius:8px; border:1px solid rgba(0,0,0,0.04); background:var(--card);">
+          <strong>Free</strong><div class="muted">Basic focus tools</div>
+        </div>
+        <div style="padding:12px; border-radius:8px; border:1px solid rgba(0,0,0,0.04); background:var(--card);">
+          <strong>Premium</strong><div class="muted">Full analytics + integrations</div>
+        </div>
+        <div style="padding:12px; border-radius:8px; border:1px solid rgba(0,0,0,0.04); background:var(--card);">
+          <strong>Enterprise</strong><div class="muted">SAML, roles & priority support</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:28px;">
+      <h2 style="color:var(--brand); margin-bottom:8px;">Contact</h2>
+      <p class="muted">Questions? Reach out at <a href="mailto:hello@focusly.example">hello@focusly.example</a></p>
+    </section>
+
+  </main>
+
+  <!-- ===========================
+       Modal: Get Started (accessible dialog)
+       ===========================
+  -->
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
+    <div class="modal" role="document">
+      <h3 id="modalTitle">Get started with Focusly</h3>
+      <p class="muted">Quick sign up — this is a demo form used in the video presentation.</p>
+
+      <form id="signupForm" onsubmit="return false;">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+
+        <div style="display:flex; gap:8px; justify-content:flex-end;">
+          <button type="button" id="closeModal" class="control">Cancel</button>
+          <button id="submitSignup" type="submit" class="btn-cta">Sign up</button>
+        </div>
+
+        <div id="signupSuccess" style="display:none; margin-top:12px;" class="muted">Thanks — we've sent you a welcome email (mock).</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===========================
+       SCRIPT: All interactive behavior
+       - heavily commented so you can narrate the video
+       ===========================
+  -->
+  <script>
+    /************************************************************************
+     * Helper: Query selectors used throughout
+     ************************************************************************/
+    const htmlEl = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeLabel = document.getElementById('themeLabel');
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const openGetStarted = document.getElementById('openGetStarted');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const closeModal = document.getElementById('closeModal');
+    const signupForm = document.getElementById('signupForm');
+    const signupSuccess = document.getElementById('signupSuccess');
+
+    /************************************************************************
+     * THEME TOGGLE
+     ************************************************************************/
+    (function initTheme() {
+      const saved = localStorage.getItem('focusly-theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        htmlEl.setAttribute('data-theme','dark');
+        themeLabel.textContent = '☀️';
+        themeToggle.setAttribute('aria-pressed','true');
+      } else {
+        htmlEl.removeAttribute('data-theme');
+        themeLabel.textContent = '🌙';
+        themeToggle.setAttribute('aria-pressed','false');
+      }
+
+      themeToggle.addEventListener('click', () => {
+        const isDark = htmlEl.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          htmlEl.removeAttribute('data-theme');
+          localStorage.setItem('focusly-theme','light');
+          themeLabel.textContent = '🌙';
+          themeToggle.setAttribute('aria-pressed','false');
+        } else {
+          htmlEl.setAttribute('data-theme','dark');
+          localStorage.setItem('focusly-theme','dark');
+          themeLabel.textContent = '☀️';
+          themeToggle.setAttribute('aria-pressed','true');
+        }
+      });
+    })();
+
+    /************************************************************************
+     * MOBILE MENU: toggle open/close
+     * - updates aria-expanded and aria-hidden for accessibility
+     * - now behaves as a vertical dropdown on mobile
+     ************************************************************************/
+    (function mobileMenuHandler(){
+      function openMenu() {
+        mobileMenu.classList.add('open');
+        mobileMenu.setAttribute('aria-hidden','false');
+        mobileToggle.setAttribute('aria-expanded','true');
+      }
+      function closeMenu() {
+        mobileMenu.classList.remove('open');
+        mobileMenu.setAttribute('aria-hidden','true');
+        mobileToggle.setAttribute('aria-expanded','false');
+      }
+      mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (mobileToggle.getAttribute('aria-expanded') === 'true') closeMenu();
+        else openMenu();
+      });
+      // close when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+          closeMenu();
+        }
+      });
+      // keyboard: ESC closes menu
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeMenu();
+        }
+      });
+    })();
+
+    /************************************************************************
+     * MODAL (Get Started)
+     ************************************************************************/
+    (function modalHandler(){
+      function open() {
+        modalBackdrop.classList.add('open');
+        modalBackdrop.setAttribute('aria-hidden','false');
+        // focus the first input
+        document.getElementById('name').focus();
+      }
+      function close() {
+        modalBackdrop.classList.remove('open');
+        modalBackdrop.setAttribute('aria-hidden','true');
+        openGetStarted.focus();
+      }
+
+      openGetStarted.addEventListener('click', open);
+      closeModal.addEventListener('click', close);
+
+      // close on backdrop click
+      modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) close();
+      });
+
+      // keyboard: ESC to close
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalBackdrop.classList.contains('open')) close();
+      });
+
+      // form submit simulation
+      signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        signupSuccess.style.display = 'block';
+        document.getElementById('submitSignup').disabled = true;
+        setTimeout(() => {
+          close();
+          document.getElementById('submitSignup').disabled = false;
+          signupForm.reset();
+          signupSuccess.style.display = 'none';
+        }, 1200);
+      });
+    })();
+
+    /************************************************************************
+     * FEATURE CARDS: accessible expand/collapse
+     ************************************************************************/
+    (function featureCards(){
+      const cards = document.querySelectorAll('.feature-card');
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          const open = card.getAttribute('aria-expanded') === 'true';
+          card.setAttribute('aria-expanded', String(!open));
+        });
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+          }
+        });
+      });
+    })();
+
+    /************************************************************************
+     * POMODORO / FOCUS TIMER
+     ************************************************************************/
+    (function focusTimer(){
+      const display = document.getElementById('timerDisplay');
+      const startBtn = document.getElementById('timerStart');
+      const pauseBtn = document.getElementById('timerPause');
+      let total = 25 * 60;
+      let remaining = total;
+      let timerId = null;
+      let running = false;
+
+      function formatTime(sec){
+        const m = Math.floor(sec / 60).toString().padStart(2,'0');
+        const s = (sec % 60).toString().padStart(2,'0');
+        return `${m}:${s}`;
+      }
+
+      function tick(){
+        if (remaining <= 0) {
+          clearInterval(timerId);
+          running = false;
+          display.textContent = "00:00";
+          try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const o = ctx.createOscillator();
+            o.type = 'sine';
+            o.frequency.value = 880;
+            o.connect(ctx.destination);
+            o.start();
+            setTimeout(()=>{ o.stop(); ctx.close(); }, 220);
+          } catch(e) {}
+          return;
+        }
+        remaining--;
+        display.textContent = formatTime(remaining);
+        const m = document.getElementById('productivityMeter');
+        if (m) {
+          const percent = Math.min(100, Math.round(((total - remaining) / total) * 100));
+          m.value = percent;
+        }
+      }
+
+      startBtn.addEventListener('click', () => {
+        if (running) return;
+        running = true;
+        if (timerId) clearInterval(timerId);
+        timerId = setInterval(tick, 1000);
+      });
+
+      pauseBtn.addEventListener('click', () => {
+        if (!running) return;
+        running = false;
+        clearInterval(timerId);
+      });
+
+      display.addEventListener('click', () => {
+        if (confirm('Reset focus timer to 25:00?')) {
+          remaining = total;
+          display.textContent = formatTime(remaining);
+        }
+      });
+
+      display.textContent = formatTime(remaining);
+    })();
+
+    /************************************************************************
+     * Close mobile menu after clicking links (mobile friendliness)
+     ************************************************************************/
+    (function navCloseOnClick(){
+      const mobileRow = document.querySelector('.mobile-row');
+      if (!mobileRow) return;
+      mobileRow.addEventListener('click', (e) => {
+        if (e.target && e.target.matches('a')) {
+          if (mobileToggle.getAttribute('aria-expanded') === 'true') mobileToggle.click();
+        }
+      });
+    })();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+    /* ===========================
+       Basic reset and typography
+       =========================== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      line-height: 1.45;
+      color: #12220f;
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding-bottom: 48px;
+    }
+
+    /* ===========================
+       CSS Variables (for easy theming)
+       =========================== */
+    :root{
+      --bg: #ffffff;
+      --text: #12220f;
+      --muted: #6b7774;
+      --brand: #1b7a2a;
+      --accent: #0e6b3c;
+      --card: #ffffff;
+      --glass: rgba(255,255,255,0.6);
+    }
+    [data-theme="dark"]{
+      --bg: #0b1410;
+      --text: #e7f7ec;
+      --muted: #9aa79d;
+      --brand: #6ee089;
+      --accent: #7cd99a;
+      --card: #0f1a16;
+      --glass: rgba(10,16,14,0.45);
+    }
+
+    /* ===========================
+       Layout container widths
+       =========================== */
+    .container {
+      width: min(1200px, 96%);
+      margin: 0 auto;
+    }
+
+    /* ===========================
+       Skip link (accessibility)
+       =========================== */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      background: var(--brand);
+      color: #fff;
+      padding: 8px 12px;
+      z-index: 9999;
+    }
+    .skip-link:focus {
+      left: 12px;
+      top: 12px;
+      border-radius: 6px;
+    }
+
+    /* ===========================
+       Header & nav styles
+       =========================== */
+    header.site-header {
+      background: linear-gradient(180deg, var(--glass), transparent);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      position: sticky; /* keeps header visible as user scrolls */
+      top: 0;
+      backdrop-filter: blur(6px);
+      z-index: 100;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 12px;
+    }
+    .brand {
+      color: var(--brand);
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.2px;
+    }
+
+    /* Desktop nav (hidden on small screens) */
+    nav.nav-desktop {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+    nav.nav-desktop a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      padding: 8px;
+      border-radius: 8px;
+    }
+    nav.nav-desktop a:focus,
+    nav.nav-desktop a:hover {
+      outline: none;
+      background: rgba(0,0,0,0.04);
+    }
+
+    /* Hamburger (visible only on narrow viewports) */
+    .hamburger {
+      display: none;
+      border: 0;
+      background: transparent;
+      padding: 8px;
+      cursor: pointer;
+    }
+    .hamburger .line {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--brand);
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: transform 220ms ease, opacity 220ms ease;
+    }
+    /* when the menu is active we morph the lines using data attributes */
+    .hamburger[aria-expanded="true"] .line:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+    .hamburger[aria-expanded="true"] .line:nth-child(2){ opacity: 0; }
+    .hamburger[aria-expanded="true"] .line:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+
+    /* Mobile menu container (hidden initially) */
+    /* NOTE: .mobile-menu.open will show the dropdown — JS toggles the 'open' class */
+    .mobile-menu {
+      display: none;
+      width: 100%;
+      padding: 8px 0;
+      border-top: 1px solid rgba(0,0,0,0.04);
+      background: var(--card);
+      position: relative;
+      z-index: 90;
+      transition: max-height 200ms ease, opacity 200ms ease;
+      overflow: hidden;
+    }
+    /* show when open */
+    .mobile-menu.open { display: block; }
+
+    /* By default mobile-row is horizontal (pills). On small screens we switch to vertical drop-down below */
+    .mobile-row {
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      overflow-x: auto;
+      align-items: center;
+    }
+    .mobile-row a {
+      flex: 0 0 auto;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #effaf1;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 6px 18px rgba(14,107,60,0.06);
+    }
+
+    /* ===========================
+       Hero section
+       =========================== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding: 48px 0;
+    }
+    .eyebrow { color: var(--muted); font-size: 13px; margin-bottom: 6px; }
+    .hero-title {
+      color: var(--brand);
+      font-size: 44px;
+      line-height: 1.03;
+      margin: 6px 0 12px;
+      font-weight: 800;
+    }
+    .hero-desc { color: var(--muted); max-width: 54ch; margin-bottom: 18px; }
+    .btn-cta {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .hero-right { display: flex; justify-content: flex-end; align-items: center; }
+
+    /* Hero image styling (added per your request) */
+    .hero-img {
+      width: 420px;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      object-fit: cover;
+      display: block;
+    }
+    .illustration {
+      width: 420px;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), transparent);
+      padding: 18px;
+    }
+
+    /* ===========================
+       Features band
+       =========================== */
+    .features-band {
+      background: linear-gradient(180deg, rgba(235,250,237,0.8), transparent);
+      padding: 36px 0;
+      border-radius: 6px;
+      margin-top: 36px;
+    }
+    .features-inner { text-align: center; max-width: 1100px; margin: 0 auto; }
+    .features-inner h2 { color: var(--brand); font-size: 20px; margin-bottom: 8px; font-weight: 800; }
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 22px;
+      padding: 8px 18px;
+    }
+    .feature-card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+      text-align: center;
+      border: 1px solid rgba(0,0,0,0.03);
+      cursor: pointer;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+      position: relative;
+    }
+    .feature-card:focus,
+    .feature-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(0,0,0,0.10); }
+    .feature-icon { width: 52px; height: 52px; border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; background: linear-gradient(#eaf9f0,#dcf7ea); font-size: 18px; }
+    .feature-card .more { display: none; margin-top: 10px; color: var(--muted); font-size: 13px; text-align: left; }
+    .feature-card[aria-expanded="true"] .more { display: block; }
+
+    /* ===========================
+       Small controls: timer + meters
+       =========================== */
+    .controls {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .control {
+      background: var(--card);
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.04);
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .timer-display { font-weight: 800; font-size: 20px; min-width: 80px; text-align: center; }
+
+    /* Modal (Get Started) */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      background: var(--card);
+      width: min(560px, 94%);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+    }
+    .modal h3 { margin-bottom: 8px; color: var(--brand); }
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .field input[type="text"], .field input[type="email"] {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.08);
+      font-size: 14px;
+      background: transparent;
+      color: var(--text);
+    }
+
+    /* ===========================
+       Responsive adjustments
+       - IMPORTANT: mobile menu becomes a vertical dropdown here
+       =========================== */
+    @media (max-width: 880px){
+      nav.nav-desktop { display: none; }
+      .hamburger { display: inline-block; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .hero-right { order: 2; width: 100%; }
+
+      .feature-cards { grid-template-columns: 1fr; padding: 0; }
+
+      /* Make the mobile menu a dropdown (vertical stacked links)
+         - switch .mobile-row to column
+         - links become full-width touch targets
+      */
+      .mobile-menu { display: none; }             /* hidden until open by JS */
+      .mobile-menu.open { display: block; }       /* shown when class 'open' added */
+      .mobile-row {
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 6px;
+      }
+      .mobile-row a {
+        display: block;
+        border-radius: 0;
+        padding: 12px 16px;
+        background: transparent;
+        color: var(--text);
+        text-align: left;
+        border-bottom: 1px solid rgba(0,0,0,0.04);
+        box-shadow: none;
+      }
+      .mobile-row a:active, .mobile-row a:focus, .mobile-row a:hover {
+        background: rgba(0,0,0,0.03);
+      }
+    }
+
+    @media (max-width: 420px){
+      .hero-title { font-size: 24px; }
+      .feature-icon { width: 44px; height: 44px; }
+    }
+
+    /* small helper */
+    .muted { color: var(--muted); font-size: 13px; }
+    .row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }

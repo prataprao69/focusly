@@ -1,0 +1,5 @@
+AI-Declaration
+----------------
+I used ChatGPT only to get guidance about folder structure and README content before starting the recorded development.
+All HTML and CSS files included in this ZIP were written manually by me during the recorded session.
+If AI was used during planning, it is declared here.
