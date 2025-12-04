@@ -1,8 +1,7 @@
 # Focusly Landing Page Assignment (KraftPixel)
 
 ## Screen Recording (Unlisted YouTube)
-Place your unlisted YouTube link here after uploading the recording.
-
+https://youtu.be/s6jtio-63Mw?si=KhKQwA0DqnXOH0tW
 ## Live Hosted URL
 https://github.com/prataprao69/focusly/tree/main/focusly_assignment
 ## GitHub Repository
