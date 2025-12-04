@@ -4,7 +4,7 @@
 Place your unlisted YouTube link here after uploading the recording.
 
 ## Live Hosted URL
-https://github.com/prataprao69/focusly/tree/main/focusly_assignment)
+https://github.com/prataprao69/focusly/tree/main/focusly_assignment
 ## GitHub Repository
 https://github.com/prataprao69/focusly/tree/main/focusly_assignment
 
